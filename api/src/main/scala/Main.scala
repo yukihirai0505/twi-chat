@@ -7,6 +7,7 @@ import services.{AuthService, UsersService}
 import utils.{Config, DatabaseService, FlywayService}
 
 import scala.concurrent.ExecutionContext
+import scala.util.{Failure, Success}
 
 /**
   * author Yuki Hirai on 2017/06/27.
@@ -27,5 +28,13 @@ object Main extends App with Config {
 
   val httpService = new HttpService(usersService, authService)
 
-  Http().bindAndHandle(httpService.routes, httpHost, httpPort)
+  val binding = Http().bindAndHandle(httpService.routes, httpHost, httpPort)
+  binding.onComplete {
+    case Success(_binding) ⇒
+      val localAddress = _binding.localAddress
+      println(s"Server is listening on ${localAddress.getHostName}:${localAddress.getPort}")
+    case Failure(e) ⇒
+      println(s"Binding failed with ${e.getMessage}")
+      actorSystem.terminate()
+  }
 }

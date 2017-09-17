@@ -15,7 +15,7 @@ import scala.util.Random
   */
 trait BaseServiceTest extends WordSpec with Matchers with ScalatestRouteTest with CirceSupport {
 
-  private val databaseService = new DatabaseService("jdbc:mysql://localhost:3306/database-name?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci", "root", "root")
+  private val databaseService = new DatabaseService("jdbc:mysql://localhost:3306/blue_sky?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&connectionCollation=utf8mb4_general_ci", "root", "root")
 
   val usersService = new UsersService(databaseService)
   val authService = new AuthService(databaseService)(usersService)
