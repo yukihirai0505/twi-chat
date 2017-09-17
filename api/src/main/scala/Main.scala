@@ -3,7 +3,7 @@ import akka.event.{Logging, LoggingAdapter}
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import http.HttpService
-import services.{AuthService, UsersService}
+import services.{AuthService, ChatService, UsersService}
 import utils.{Config, DatabaseService, FlywayService}
 
 import scala.concurrent.ExecutionContext
@@ -25,8 +25,9 @@ object Main extends App with Config {
 
   val usersService = new UsersService(databaseService)
   val authService = new AuthService(databaseService)(usersService)
+  val chatService = new ChatService()
 
-  val httpService = new HttpService(usersService, authService)
+  val httpService = new HttpService(usersService, authService, chatService)
 
   val binding = Http().bindAndHandle(httpService.routes, httpHost, httpPort)
   binding.onComplete {
