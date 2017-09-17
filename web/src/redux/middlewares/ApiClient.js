@@ -162,7 +162,7 @@ function call(api, body, params) {
   console.debug('fetching')
 
   let url
-  if (api.config.type == 'es') {
+  if (api.config.type === 'es') {
     url = API.esRoot + path
   } else {
     url = API.root + path

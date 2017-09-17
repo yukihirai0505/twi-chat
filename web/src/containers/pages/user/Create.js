@@ -5,10 +5,6 @@ import CreateForm from '../../organisms/user/CreateForm'
 
 class Create extends Component {
 
-  constructor() {
-    super()
-  }
-
   render() {
     return (
       <div className="animated fadeIn">

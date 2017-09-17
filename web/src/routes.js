@@ -1,11 +1,11 @@
-import React from 'react'
-import {Route, Switch, Redirect} from 'react-router-dom'
+import React from "react";
+import {Redirect, Route, Switch} from "react-router-dom";
 
-import App from './containers/App'
-import User from './containers/pages/user/Index'
-import CreateUser from './containers/pages/user/Create'
-import Confirm from './containers/pages/user/Confirm'
-import Dashboard from './containers/pages/dashboard/Index'
+import App from "./containers/App";
+import User from "./containers/pages/user/Index";
+import CreateUser from "./containers/pages/user/Create";
+import Confirm from "./containers/pages/user/Confirm";
+import Dashboard from "./containers/pages/dashboard/Index";
 
 export function getPathName(pathName) {
   const paths = [
@@ -16,9 +16,7 @@ export function getPathName(pathName) {
     {path: '/user/create/confirm', name: 'Complete'},
   ]
   return paths.map((p) => {
-    if (p.path === pathName) {
-      return p.name
-    }
+    return p.path === pathName ? p.name : ''
   })
 }
 

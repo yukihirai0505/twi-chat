@@ -9,10 +9,6 @@ import * as validate from "../../../utils/Validate";
 
 class Create extends Component {
 
-  constructor() {
-    super()
-  }
-
   componentWillMount() {
     this.props.showPassword([])
   }

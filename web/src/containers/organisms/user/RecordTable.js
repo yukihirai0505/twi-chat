@@ -5,10 +5,6 @@ import {getUsers, showPassword} from "../../../redux/modules/User";
 
 class RecordTable extends Component {
 
-  constructor() {
-    super()
-  }
-
   componentWillMount() {
     this.props.showPassword([])
     this.props.getUsers()

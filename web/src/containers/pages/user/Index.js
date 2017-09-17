@@ -5,10 +5,6 @@ import RecordTable from '../../organisms/user/RecordTable'
 
 class User extends Component {
 
-  constructor() {
-    super()
-  }
-
   buttonAction() {
     this.props.history.push('/user/create')
   }

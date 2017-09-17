@@ -18,10 +18,6 @@ class App extends Component {
     children: PropTypes.any
   }
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <Router>

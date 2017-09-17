@@ -21,7 +21,7 @@ export function createFieldErrors(apiErrors, error, inputName, touched) {
     for (let i = 0; pair[i]; i++) {
       let kv = pair[i]
       if (kv.match(/\[[0-9]+\]/)) {
-        kv = kv.replace(/[\[\]]/g, ".")
+        kv = kv.replace(/[[\]]/g, ".")
         arg += kv
       } else {
         if (pair.length === i + 1) {

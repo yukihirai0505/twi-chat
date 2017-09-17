@@ -4,7 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <footer className="app-footer">
-        <a href="#">CORE UI Template</a> &copy; 2017 .
+        <a href="https://yabaiwebyasan.com/">ヤバイWEB屋さん</a> &copy; 2017 .
       </footer>
     )
   }

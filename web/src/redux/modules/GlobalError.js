@@ -27,7 +27,7 @@ export function clear() {
 }
 
 // Reducer
-export function globalErrorReducer(state = new GlobalError, action) {
+export function globalErrorReducer(state = new GlobalError(), action) {
   const {type} = action
   switch (type) {
     case SHOW_ERROR:

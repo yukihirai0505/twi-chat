@@ -5,10 +5,6 @@ import {createUser, showPassword} from '../../../redux/modules/User'
 
 class Confirm extends Component {
 
-  constructor() {
-    super()
-  }
-
   componentDidMount() {
     window.setTimeout(() => this.props.history.push('/user'), 3000)
   }

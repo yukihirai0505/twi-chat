@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route, Link} from 'react-router-dom'
 import {Breadcrumb, BreadcrumbItem} from 'reactstrap'
-import {routes, getPathName} from '../../../routes'
+import {getPathName} from '../../../routes'
 
 const getPaths = (pathname) => {
   const paths = ['/']
@@ -40,7 +40,6 @@ const BreadcrumbsItem = ({...rest, match}) => {
 
 const Breadcrumbs = ({...rest, location: {pathname}, match}) => {
   const paths = getPaths(pathname)
-  const i = 0
   const items = paths.map((path, i) => <Route key={i++} path={path} component={BreadcrumbsItem}/>)
 
   return (

@@ -16,10 +16,6 @@ class Root extends Component {
     store: PropTypes.object.isRequired
   }
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const {store} = this.props
 
