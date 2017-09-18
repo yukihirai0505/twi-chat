@@ -3,6 +3,7 @@ package services
 import akka.actor._
 import akka.stream.OverflowStrategy
 import akka.stream.scaladsl._
+import models.Protocol
 
 trait Chat {
   def chatFlow(sender: String): Flow[String, Protocol.Message, Any]

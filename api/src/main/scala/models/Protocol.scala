@@ -1,4 +1,4 @@
-package services
+package models
 
 object Protocol {
   sealed trait Message

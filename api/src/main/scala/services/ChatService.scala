@@ -6,10 +6,12 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.model.ws.{Message, TextMessage}
 import akka.http.scaladsl.server.Directives
 import akka.stream.scaladsl.Flow
-import services.Protocol.ChatMessage
+import models.Protocol
+import models.Protocol.ChatMessage
 
 import scala.concurrent.duration._
 import upickle.default._
+
 import scala.util.Failure
 
 class ChatService(implicit system: ActorSystem) extends Directives {
