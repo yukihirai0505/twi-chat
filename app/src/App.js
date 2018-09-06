@@ -41,11 +41,11 @@ class App extends Component {
     }
     database
       .ref('/messages/')
-      .limitToLast(12)
+      .limitToLast(100)
       .on('child_added', callback)
     database
       .ref('/messages/')
-      .limitToLast(12)
+      .limitToLast(100)
       .on('child_changed', callback)
   }
 
@@ -102,15 +102,52 @@ class App extends Component {
       })
   }
 
+  getTwitterScreenName = () => {
+    const { user } = this.state
+    // TODO:// アクセストークンからscreen name とってこないと取れない系？w
+    // if (user && user.providerData) {
+    //
+    // }
+  }
+
+  renderMessage = (photoUrl, name, x, y, inputBtn) => {
+    return (
+      <div
+        className="message"
+        style={{
+          position: 'absolute',
+          left: x,
+          top: y
+        }}
+      >
+        <a href="http://twitter.com/" target="_blank">
+          <div className="faceicon">
+            <img src={photoUrl} alt="" />
+          </div>
+        </a>
+        <div className="chatting">
+          <div className="says">{inputBtn}</div>
+        </div>
+        <span style={{ fontSize: '10px', fontWeight: 'bold' }}>
+          <a href="http://twitter.com/" target="_blank">
+            {name}
+          </a>
+        </span>
+      </div>
+    )
+  }
+
   render() {
     const { user, position, messages } = this.state
     let hasPosition = position && position.x && position.y
     return user ? (
       <div className="App" onClick={this.clickScreen}>
-        <button className="square_btn" onClick={this.handleSignOut}>ログアウト</button>
-        <div id="cloud"/>
+        <button className="square_btn" onClick={this.handleSignOut}>
+          ログアウト
+        </button>
+        <div id="cloud" />
         {messages.map(message =>
-          renderMessage(
+          this.renderMessage(
             message.profilePicUrl,
             message.name,
             message.x,
@@ -119,7 +156,7 @@ class App extends Component {
           )
         )}
         {hasPosition &&
-          renderMessage(
+          this.renderMessage(
             getPhotoURL(),
             getUserName(),
             position.x,
@@ -132,30 +169,9 @@ class App extends Component {
           )}
       </div>
     ) : (
-      <SignIn handleLogin={this.handleLogin}/>
+      <SignIn handleLogin={this.handleLogin} />
     )
   }
-}
-
-const renderMessage = (photoUrl, name, x, y, inputBtn) => {
-  return (
-    <div
-      className="message"
-      style={{
-        position: 'absolute',
-        left: x,
-        top: y
-      }}
-    >
-      <div className="faceicon">
-        <img src={photoUrl} alt="" />
-      </div>
-      <div className="chatting">
-        <div className="says">{inputBtn}</div>
-      </div>
-      <span style={{fontSize: '10px', fontWeight: 'bold'}}>{name}</span>
-    </div>
-  )
 }
 
 export default App

@@ -6,45 +6,75 @@
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #14171a;
   font-size: 14px;
+  font-weight: 300;
   background-color: #4ab3f4;
 
-
-  background-image: -o-linear-gradient(bottom, #4DB6EB 0%, #99D8DE 100%);
-  background-image: -moz-linear-gradient(bottom, #4DB6EB 0%, #99D8DE 100%);
-  background-image: -webkit-linear-gradient(bottom, #4DB6EB 0%, #99D8DE 100%);
-  background-image: -ms-linear-gradient(bottom, #4DB6EB 0%, #99D8DE 100%);
-  background-image: linear-gradient(to bottom, #4DB6EB 0%, #99D8DE 100%);
+  background-image: -o-linear-gradient(bottom, #4db6eb 0%, #99d8de 100%);
+  background-image: -moz-linear-gradient(bottom, #4db6eb 0%, #99d8de 100%);
+  background-image: -webkit-linear-gradient(bottom, #4db6eb 0%, #99d8de 100%);
+  background-image: -ms-linear-gradient(bottom, #4db6eb 0%, #99d8de 100%);
+  background-image: linear-gradient(to bottom, #4db6eb 0%, #99d8de 100%);
 }
 
-#cloud{
-  width:3500px;
-  height:1500px;
-  background:url(./clouds.png);
+#cloud {
+  width: 3500px;
+  height: 1500px;
+  background: url(./clouds.png);
   animation: cloudmove 20s linear infinite;
   -webkit-animation: cloudmove 20s linear infinite;
   -moz-animation: cloudmove 20s linear infinite;
 }
 
 @keyframes cloudmove {
-  0% {background-position: 0 0;}
-  25% {background-position: 200px 5px;}
-  50% {background-position: 400px 0;}
-  75% {background-position: 600px 5px;}
-  100% {background-position: 800px 0;}
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: 200px 5px;
+  }
+  50% {
+    background-position: 400px 0;
+  }
+  75% {
+    background-position: 600px 5px;
+  }
+  100% {
+    background-position: 800px 0;
+  }
 }
 @-webkit-keyframes cloudmove {
-  0% {background-position: 0 0;}
-  25% {background-position: 200px 5px;}
-  50% {background-position: 400px 0;}
-  75% {background-position: 600px 5px;}
-  100% {background-position: 800px 0;}
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: 200px 5px;
+  }
+  50% {
+    background-position: 400px 0;
+  }
+  75% {
+    background-position: 600px 5px;
+  }
+  100% {
+    background-position: 800px 0;
+  }
 }
 @-moz-keyframes cloudmove {
-  0% {background-position: 0 0;}
-  25% {background-position: 200px 5px;}
-  50% {background-position: 400px 0;}
-  75% {background-position: 600px 5px;}
-  100% {background-position: 800px 0;}
+  0% {
+    background-position: 0 0;
+  }
+  25% {
+    background-position: 200px 5px;
+  }
+  50% {
+    background-position: 400px 0;
+  }
+  75% {
+    background-position: 600px 5px;
+  }
+  100% {
+    background-position: 800px 0;
+  }
 }
 
 /* message */
@@ -70,6 +100,12 @@
 .message .chatting {
   width: 100%;
   text-align: left;
+}
+
+.message a {
+  font-weight: bold;
+  color: #14171a;
+  text-decoration: none;
 }
 
 .says {
@@ -102,13 +138,13 @@
 
 /* btn */
 
-.square_btn{
+.square_btn {
   display: inline-block;
   padding: 0.5em 1em;
   text-decoration: none;
   background: #f7f7f7;
-  border-left: solid 6px #ff7c5c;/*左線*/
-  color: #ff7c5c;/*文字色*/
+  border-left: solid 6px #ff7c5c; /*左線*/
+  color: #ff7c5c; /*文字色*/
   font-weight: bold;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
 }
