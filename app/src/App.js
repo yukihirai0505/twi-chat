@@ -82,7 +82,6 @@ class App extends Component {
           y: undefined
         }
       })
-      console.log('enter!')
     }
   }
 
@@ -106,14 +105,15 @@ class App extends Component {
     let hasPosition = position && position.x && position.y
     return user ? (
       <div className="App" onClick={this.clickScreen}>
-        {/*<header className="App-header">*/}
-        {/*<img src={logo} className="App-logo" alt="logo"/>*/}
-        {/*<h1 className="App-title">Welcome to React</h1>*/}
-        {/*</header>*/}
-        {/*<p className="App-intro">*/}
-        {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
-        {/*</p>*/}
-        {messages.map(message => renderMessage(message.profilePicUrl, message.name, message.x, message.y, <span>{message.text}</span>))}
+        {messages.map(message =>
+          renderMessage(
+            message.profilePicUrl,
+            message.name,
+            message.x,
+            message.y,
+            <span>{message.text}</span>
+          )
+        )}
         {hasPosition &&
           renderMessage(
             getPhotoURL(),
