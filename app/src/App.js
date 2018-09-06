@@ -12,11 +12,13 @@ class App extends Component {
       position: {
         x: undefined,
         y: undefined
-      }
+      },
+      messages: []
     }
   }
 
   async componentDidMount() {
+    // User
     auth.onAuthStateChanged(user => {
       this.setState({ user })
     })
@@ -27,6 +29,23 @@ class App extends Component {
     if (user) {
       this.setState({ user })
     }
+
+    // DB
+    const callback = snap => {
+      const { messages } = this.state
+      let data = snap.val()
+      this.setState({
+        messages: messages.concat([data])
+      })
+    }
+    database
+      .ref('/messages/')
+      .limitToLast(12)
+      .on('child_added', callback)
+    database
+      .ref('/messages/')
+      .limitToLast(12)
+      .on('child_changed', callback)
   }
 
   clickScreen = e => {
@@ -83,7 +102,7 @@ class App extends Component {
   }
 
   render() {
-    const { user, position } = this.state
+    const { user, position, messages } = this.state
     let hasPosition = position && position.x && position.y
     return user ? (
       <div className="App" onClick={this.clickScreen}>
@@ -94,29 +113,41 @@ class App extends Component {
         {/*<p className="App-intro">*/}
         {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
         {/*</p>*/}
-        {hasPosition && (
-          <div
-            style={{
-              position: 'absolute',
-              left: position.x,
-              top: position.y
-            }}
-          >
-            <img src={getPhotoURL()} alt=""/>
-            <span>{getUserName()}</span>
+        {messages.map(message => renderMessage(message.profilePicUrl, message.name, message.x, message.y, <span>{message.text}</span>))}
+        {hasPosition &&
+          renderMessage(
+            getPhotoURL(),
+            getUserName(),
+            position.x,
+            position.y,
             <input
               id="message"
               onClick={this.inputBtn}
               onKeyUp={this.sendMessage}
             />
-          </div>
-        )}
+          )}
         <button onClick={this.handleSignOut}>Sign out with Twitter</button>
       </div>
     ) : (
       <button onClick={this.handleLogin}>Login with Twitter</button>
     )
   }
+}
+
+const renderMessage = (photoUrl, name, x, y, inputBtn) => {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: x,
+        top: y
+      }}
+    >
+      <img src={photoUrl} alt="" />
+      <span>{name}</span>
+      {inputBtn}
+    </div>
+  )
 }
 
 export default App
