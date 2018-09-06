@@ -105,6 +105,8 @@ class App extends Component {
     let hasPosition = position && position.x && position.y
     return user ? (
       <div className="App" onClick={this.clickScreen}>
+        <button onClick={this.handleSignOut}>Sign out with Twitter</button>
+        <div id="cloud"/>
         {messages.map(message =>
           renderMessage(
             message.profilePicUrl,
@@ -126,7 +128,6 @@ class App extends Component {
               onKeyUp={this.sendMessage}
             />
           )}
-        <button onClick={this.handleSignOut}>Sign out with Twitter</button>
       </div>
     ) : (
       <button onClick={this.handleLogin}>Login with Twitter</button>
@@ -150,7 +151,7 @@ const renderMessage = (photoUrl, name, x, y, inputBtn) => {
       <div className="chatting">
         <div className="says">{inputBtn}</div>
       </div>
-      <span style={{fontSize: '10px'}}>{name}</span>
+      <span style={{fontSize: '10px', fontWeight: 'bold'}}>{name}</span>
     </div>
   )
 }
