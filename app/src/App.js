@@ -4,11 +4,14 @@ import './App.css'
 import { auth, providerTwitter } from './config'
 
 class App extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
-      user: undefined
+      user: undefined,
+      position: {
+        x: undefined,
+        y: undefined
+      }
     }
   }
 
@@ -23,6 +26,15 @@ class App extends Component {
     if (user) {
       this.setState({ user })
     }
+  }
+
+  clickScreen = e => {
+    this.setState({
+      position: {
+        x: e.pageX,
+        y: e.pageY
+      }
+    })
   }
 
   handleLogin = () => {
@@ -41,21 +53,31 @@ class App extends Component {
   }
 
   render() {
-    const { user } = this.state
+    const { user, position } = this.state
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        {user ?
+      <div className="App" onClick={this.clickScreen}>
+        {/*<header className="App-header">*/}
+        {/*<img src={logo} className="App-logo" alt="logo"/>*/}
+        {/*<h1 className="App-title">Welcome to React</h1>*/}
+        {/*</header>*/}
+        {/*<p className="App-intro">*/}
+        {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
+        {/*</p>*/}
+        {position && position.x &&
+          position.y && (
+            <input
+              style={{
+                position: 'absolute',
+                left: position.x,
+                top: position.y
+              }}
+            />
+          )}
+        {user ? (
           <button onClick={this.handleSignOut}>Sign out with Twitter</button>
-          :
+        ) : (
           <button onClick={this.handleLogin}>Login with Twitter</button>
-        }
+        )}
       </div>
     )
   }
