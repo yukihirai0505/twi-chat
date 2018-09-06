@@ -3,6 +3,7 @@ import './App.css'
 import { database, auth, providerTwitter } from './config/config'
 import { getUserName, getPhotoURL } from './utils/auth'
 import moment from 'moment-timezone'
+import SignIn from './SignIn'
 
 class App extends Component {
   constructor(props) {
@@ -85,7 +86,8 @@ class App extends Component {
     }
   }
 
-  handleLogin = () => {
+  handleLogin = e => {
+    e.preventDefault()
     auth.signInWithRedirect(providerTwitter)
   }
 
@@ -105,7 +107,7 @@ class App extends Component {
     let hasPosition = position && position.x && position.y
     return user ? (
       <div className="App" onClick={this.clickScreen}>
-        <button onClick={this.handleSignOut}>Sign out with Twitter</button>
+        <button className="square_btn" onClick={this.handleSignOut}>ログアウト</button>
         <div id="cloud"/>
         {messages.map(message =>
           renderMessage(
@@ -130,7 +132,7 @@ class App extends Component {
           )}
       </div>
     ) : (
-      <button onClick={this.handleLogin}>Login with Twitter</button>
+      <SignIn handleLogin={this.handleLogin}/>
     )
   }
 }
