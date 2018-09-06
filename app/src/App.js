@@ -37,6 +37,9 @@ class App extends Component {
     })
   }
 
+  inputBtn = e => {
+    e.stopPropagation()
+  }
   handleLogin = () => {
     auth.signInWithRedirect(providerTwitter)
   }
@@ -63,7 +66,8 @@ class App extends Component {
         {/*<p className="App-intro">*/}
         {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
         {/*</p>*/}
-        {position && position.x &&
+        {position &&
+          position.x &&
           position.y && (
             <input
               style={{
@@ -71,6 +75,7 @@ class App extends Component {
                 left: position.x,
                 top: position.y
               }}
+              onClick={this.inputBtn}
             />
           )}
         {user ? (
