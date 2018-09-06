@@ -40,6 +40,13 @@ class App extends Component {
   inputBtn = e => {
     e.stopPropagation()
   }
+
+  sendMessage = e => {
+    if (e.keyCode === 13) {
+      console.log('enter!')
+    }
+  }
+
   handleLogin = () => {
     auth.signInWithRedirect(providerTwitter)
   }
@@ -57,7 +64,8 @@ class App extends Component {
 
   render() {
     const { user, position } = this.state
-    return (
+    let hasPosition = position && position.x && position.y
+    return user ? (
       <div className="App" onClick={this.clickScreen}>
         {/*<header className="App-header">*/}
         {/*<img src={logo} className="App-logo" alt="logo"/>*/}
@@ -66,24 +74,23 @@ class App extends Component {
         {/*<p className="App-intro">*/}
         {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
         {/*</p>*/}
-        {position &&
-          position.x &&
-          position.y && (
-            <input
-              style={{
-                position: 'absolute',
-                left: position.x,
-                top: position.y
-              }}
-              onClick={this.inputBtn}
-            />
-          )}
-        {user ? (
-          <button onClick={this.handleSignOut}>Sign out with Twitter</button>
-        ) : (
-          <button onClick={this.handleLogin}>Login with Twitter</button>
+        {hasPosition && (
+          <div
+            style={{
+              position: 'absolute',
+              left: position.x,
+              top: position.y
+            }}
+          >
+            <img src={auth.currentUser.photoURL} alt="" />
+            <span>{auth.currentUser.displayName}</span>
+            <input onClick={this.inputBtn} onKeyUp={this.sendMessage} />
+          </div>
         )}
+        <button onClick={this.handleSignOut}>Sign out with Twitter</button>
       </div>
+    ) : (
+      <button onClick={this.handleLogin}>Login with Twitter</button>
     )
   }
 }
