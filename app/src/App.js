@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import './App.css'
-import { auth, providerTwitter } from './config'
+import { database, auth, providerTwitter } from './config/config'
+import { getUserName, getPhotoURL } from './utils/auth'
+import moment from 'moment-timezone'
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +43,26 @@ class App extends Component {
   }
 
   sendMessage = e => {
+    const { position } = this.state
     if (e.keyCode === 13) {
+      let message = document.getElementById('message')
+      database.ref('/messages/').push({
+        name: getUserName(),
+        text: message.value,
+        profilePicUrl: getPhotoURL(),
+        x: position.x,
+        y: position.y,
+        time: moment()
+          .tz('Asia/Tokyo')
+          .unix()
+      })
+      message.value = ''
+      this.setState({
+        position: {
+          x: undefined,
+          y: undefined
+        }
+      })
       console.log('enter!')
     }
   }
@@ -82,9 +102,13 @@ class App extends Component {
               top: position.y
             }}
           >
-            <img src={auth.currentUser.photoURL} alt="" />
-            <span>{auth.currentUser.displayName}</span>
-            <input onClick={this.inputBtn} onKeyUp={this.sendMessage} />
+            <img src={getPhotoURL()} alt=""/>
+            <span>{getUserName()}</span>
+            <input
+              id="message"
+              onClick={this.inputBtn}
+              onKeyUp={this.sendMessage}
+            />
           </div>
         )}
         <button onClick={this.handleSignOut}>Sign out with Twitter</button>
