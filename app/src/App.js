@@ -111,7 +111,7 @@ class App extends Component {
             message.name,
             message.x,
             message.y,
-            <span>{message.text}</span>
+            <p>{message.text}</p>
           )
         )}
         {hasPosition &&
@@ -137,15 +137,19 @@ class App extends Component {
 const renderMessage = (photoUrl, name, x, y, inputBtn) => {
   return (
     <div
+      className="message"
       style={{
         position: 'absolute',
         left: x,
         top: y
       }}
     >
-      <img src={photoUrl} alt="" />
-      <span>{name}</span>
-      {inputBtn}
+      <div className="faceicon">
+        <img src={photoUrl} alt="" />
+      </div>
+      <div className="chatting">
+        <div className="says">{inputBtn}</div>
+      </div>
     </div>
   )
 }

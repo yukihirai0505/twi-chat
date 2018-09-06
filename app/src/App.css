@@ -3,3 +3,54 @@
   height: 1040px;
   background-color: aqua;
 }
+
+.message {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.message .faceicon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.message .faceicon img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.message .chatting {
+  width: 100%;
+  text-align: left;
+}
+
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #fff;
+  -ms-transform: rotate(35deg);
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
+}
