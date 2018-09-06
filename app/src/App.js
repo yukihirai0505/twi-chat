@@ -150,6 +150,7 @@ const renderMessage = (photoUrl, name, x, y, inputBtn) => {
       <div className="chatting">
         <div className="says">{inputBtn}</div>
       </div>
+      <span style={{fontSize: '10px'}}>{name}</span>
     </div>
   )
 }
