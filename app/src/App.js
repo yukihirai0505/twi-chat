@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import './App.css'
-import { database, auth, providerTwitter } from './config/config'
+import { database, auth, providerTwitter } from './config/firebase'
 import { getUserName, getPhotoURL } from './utils/auth'
 import moment from 'moment-timezone'
 import SignIn from './pages/SignIn'
+
 
 class App extends Component {
   constructor(props) {

@@ -137,7 +137,7 @@ form button:hover {
   width: 40px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.15);
-  bottom: -160px;
+  bottom: 400px;
   -webkit-animation: square 25s infinite;
   animation: square 25s infinite;
   transition-timing-function: linear;
@@ -217,8 +217,8 @@ form button:hover {
     transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-700px) rotate(600deg);
-    transform: translateY(-700px) rotate(600deg);
+    -webkit-transform: translateY(-1200px) rotate(600deg);
+    transform: translateY(-1200px) rotate(600deg);
   }
 }
 @keyframes square {
@@ -227,7 +227,7 @@ form button:hover {
     transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-700px) rotate(600deg);
-    transform: translateY(-700px) rotate(600deg);
+    -webkit-transform: translateY(-1200px) rotate(600deg);
+    transform: translateY(-1200px) rotate(600deg);
   }
 }

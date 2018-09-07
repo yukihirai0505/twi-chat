@@ -1,4 +1,4 @@
-import { auth } from '../config/config'
+import { auth } from '../config/firebase'
 
 
 export const getUserName = () => auth.currentUser.displayName

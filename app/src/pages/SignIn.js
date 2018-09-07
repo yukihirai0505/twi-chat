@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './SignIn.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class SignIn extends Component {
+
+  static propTypes = {
+    handleLogin: PropTypes.any,
+  }
+
   constructor(props) {
     super(props)
   }
@@ -14,9 +21,11 @@ class SignIn extends Component {
       <div className="wrapper">
         <div className="container">
           <h1>Twi Chat</h1>
-          <p>Twitterログインして遊べる青空チャット</p>
+          <p>Chatting with your <FontAwesomeIcon icon={["fab", "twitter"]} /> account :)</p>
           <form className="form">
-            <button type="submit" onClick={this.props.handleLogin} id="login-button">Twitterログイン</button>
+            <button type="submit" onClick={this.props.handleLogin} id="login-button">
+              <FontAwesomeIcon icon={["fab", "twitter"]} /> Sign In
+            </button>
           </form>
         </div>
 
