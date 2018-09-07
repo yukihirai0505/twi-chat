@@ -1,6 +1,6 @@
 /* background */
 
-.App {
+.chat {
   width: 3500px;
   height: 1500px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -19,7 +19,7 @@
 #cloud {
   width: 3500px;
   height: 1500px;
-  background: url(./clouds.png);
+  background: url(../clouds.png);
   animation: cloudmove 20s linear infinite;
   -webkit-animation: cloudmove 20s linear infinite;
   -moz-animation: cloudmove 20s linear infinite;
@@ -28,53 +28,53 @@
 @keyframes cloudmove {
   0% {
     background-position: 0 0;
-  }
+}
   25% {
     background-position: 200px 5px;
-  }
+}
   50% {
     background-position: 400px 0;
-  }
+}
   75% {
     background-position: 600px 5px;
-  }
+}
   100% {
     background-position: 800px 0;
-  }
+}
 }
 @-webkit-keyframes cloudmove {
   0% {
     background-position: 0 0;
-  }
+}
   25% {
     background-position: 200px 5px;
-  }
+}
   50% {
     background-position: 400px 0;
-  }
+}
   75% {
     background-position: 600px 5px;
-  }
+}
   100% {
     background-position: 800px 0;
-  }
+}
 }
 @-moz-keyframes cloudmove {
   0% {
     background-position: 0 0;
-  }
+}
   25% {
     background-position: 200px 5px;
-  }
+}
   50% {
     background-position: 400px 0;
-  }
+}
   75% {
     background-position: 600px 5px;
-  }
+}
   100% {
     background-position: 800px 0;
-  }
+}
 }
 
 /* message */
