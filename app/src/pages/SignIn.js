@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './SignIn.css'
+import '../stylesheets/SignIn.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class SignIn extends Component {

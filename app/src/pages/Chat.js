@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './Chat.css'
+import '../stylesheets/Chat.css'
 import { getPhotoURL, getUserName } from '../utils/auth'
 import { database } from '../config/firebase'
 import moment from 'moment-timezone'

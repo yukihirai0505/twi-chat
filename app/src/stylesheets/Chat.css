@@ -19,7 +19,7 @@
 #cloud {
   width: 3500px;
   height: 1500px;
-  background: url(../clouds.png);
+  background: url(../images/clouds.png);
   animation: cloudmove 20s linear infinite;
   -webkit-animation: cloudmove 20s linear infinite;
   -moz-animation: cloudmove 20s linear infinite;
