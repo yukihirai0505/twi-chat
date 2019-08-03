@@ -21,6 +21,7 @@ class App extends Component {
       console.log('redirect result', error)
     })
     const user = result.user
+    console.log(result.credential)
     if (user) {
       this.setState({ user })
     }
